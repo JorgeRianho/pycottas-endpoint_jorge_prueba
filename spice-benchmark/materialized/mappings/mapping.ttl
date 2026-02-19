@@ -1,0 +1,24 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix ex: <http://example.org/spice/materialized#> .
+
+<#DrugTargetMap>
+  a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "drug_target_materialized" ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/spice/drug/{drug_id}" ;
+    rr:class ex:Drug ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ex:target ;
+    rr:objectMap [ rr:template "http://example.org/spice/target/{target_id}" ]
+  ] .
+
+<#TargetLabelMap>
+  a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "drug_target_materialized" ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/spice/target/{target_id}" ;
+    rr:class ex:Target ;
+  ] ;
+  rr:predicateObjectMap [ rr:predicate ex:label ; rr:objectMap [ rr:column "target_label" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:chromosomeLocation ; rr:objectMap [ rr:column "chromosome_location" ] ] .

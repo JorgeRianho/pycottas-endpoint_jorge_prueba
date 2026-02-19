@@ -1,0 +1,125 @@
+version: v1
+kind: Spicepod
+name: ontario-benchmark-10db
+
+datasets:
+  # 10 MySQL databases from Ontario-SEAData2020/datasources/mysql/docker-compose.yml
+  - from: mysql:affymetrix.Probeset_main
+    name: mysql_affymetrix_probeset_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9000
+      mysql_db: affymetrix
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:chebi.Compound_main
+    name: mysql_chebi_compound_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9001
+      mysql_db: chebi
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:dailymed.drugs_main
+    name: mysql_dailymed_drugs_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9002
+      mysql_db: dailymed
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:diseasome.diseases_main
+    name: mysql_diseasome_diseases_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9003
+      mysql_db: diseasome
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:drugbank.drugs_main
+    name: mysql_drugbank_drugs_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9004
+      mysql_db: drugbank
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:drugbank.targets_main
+    name: mysql_drugbank_targets_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9004
+      mysql_db: drugbank
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:drugbank.drugs_target
+    name: mysql_drugbank_drugs_target
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9004
+      mysql_db: drugbank
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:kegg.Compound_main
+    name: mysql_kegg_compound_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9005
+      mysql_db: kegg
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:linkedct.agency_main
+    name: mysql_linkedct_agency_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9006
+      mysql_db: linkedct
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:medicare.drugs_main
+    name: mysql_medicare_drugs_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9007
+      mysql_db: medicare
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:sider.drugs_main
+    name: mysql_sider_drugs_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9008
+      mysql_db: sider
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:tcga.aliquot_main
+    name: mysql_tcga_aliquot_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9009
+      mysql_db: tcga
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled

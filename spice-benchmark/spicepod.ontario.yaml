@@ -1,0 +1,46 @@
+version: v1
+kind: Spicepod
+name: ontario-benchmark
+
+datasets:
+  # Ontario MySQL (docker-compose.yml in Ontario-SEAData2020/datasources/mysql)
+  - from: mysql:affymetrix.Probeset_main
+    name: mysql_affymetrix_probeset_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9000
+      mysql_db: affymetrix
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  - from: mysql:chebi.Compound_main
+    name: mysql_chebi_compound_main
+    params:
+      mysql_host: host.docker.internal
+      mysql_tcp_port: 9001
+      mysql_db: chebi
+      mysql_user: ontop
+      mysql_pass: ontop123
+      mysql_sslmode: disabled
+
+  # Ontario Postgres (docker-compose-p.yml in Ontario-SEAData2020/datasources/mysql)
+  - from: postgres:public.probeset_main
+    name: pg_affymetrix_probeset_main
+    params:
+      pg_host: host.docker.internal
+      pg_port: 9100
+      pg_db: affymetrix
+      pg_user: postgres
+      pg_pass: 1234
+      pg_sslmode: disable
+
+  - from: postgres:public.compound_main
+    name: pg_chebi_compound_main
+    params:
+      pg_host: host.docker.internal
+      pg_port: 9101
+      pg_db: chebi
+      pg_user: postgres
+      pg_pass: 1234
+      pg_sslmode: disable

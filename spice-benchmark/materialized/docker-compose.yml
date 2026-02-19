@@ -1,0 +1,26 @@
+services:
+  postgres_materialized:
+    image: postgres:16
+    container_name: spice_materialized_postgres
+    environment:
+      POSTGRES_DB: materialized
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "55432:5432"
+    volumes:
+      - ./data:/data
+
+  ontop_materialized:
+    build:
+      context: ../..
+      dockerfile: spice-benchmark/materialized/ontop.Dockerfile
+    container_name: spice_materialized_ontop
+    depends_on:
+      - postgres_materialized
+    ports:
+      - "18084:8080"
+    volumes:
+      - ./mappings/ontology.owl:/app/ontology.owl:ro
+      - ./mappings/mapping.ttl:/app/mapping.ttl:ro
+      - ./mappings/ontop.properties:/app/ontop.properties:ro

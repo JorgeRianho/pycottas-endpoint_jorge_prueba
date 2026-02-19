@@ -1,0 +1,9 @@
+PREFIX ex: <http://example.org/spice/materialized#>
+
+SELECT DISTINCT ?drug ?label ?loc
+WHERE {
+  ?drug ex:target ?target .
+  ?target ex:label ?label .
+  ?target ex:chromosomeLocation ?loc .
+}
+LIMIT 200

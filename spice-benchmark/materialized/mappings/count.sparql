@@ -1,0 +1,6 @@
+PREFIX ex: <http://example.org/spice/materialized#>
+
+SELECT (COUNT(*) AS ?n)
+WHERE {
+  ?drug ex:target ?target .
+}
